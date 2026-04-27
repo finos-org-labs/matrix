@@ -7,7 +7,14 @@ add_executable(matrix_tests
     test_framework.c
     test_main.c
     test_matrix.c
-    test_mean_var.c
+    test_decompose.c
+    test_gemm.c
+    test_gemv.c
+    test_precision.c
+    test_solve.c
+    test_transpose.c
+    test_tridiag.c
+    test_vector_ops.c
 )
 
 # Link with matrix library

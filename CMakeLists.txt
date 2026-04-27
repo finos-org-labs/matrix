@@ -19,7 +19,17 @@ add_subdirectory(modules/platform EXCLUDE_FROM_ALL)
 
 # Matrix module sources
 set(MATRIX_SOURCES
-    src/mean_var.c
+    src/decompose.c
+    src/gemm_avx2.c
+    src/gemm_avx512.c
+    src/gemm_dispatch.c
+    src/gemm_scalar.c
+    src/gemm_sse42.c
+    src/gemv.c
+    src/solve.c
+    src/transpose.c
+    src/tridiag.c
+    src/vector_ops.c
 )
 
 # Create object library

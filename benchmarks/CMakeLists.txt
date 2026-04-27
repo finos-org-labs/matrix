@@ -22,8 +22,15 @@ target_link_libraries(bench_framework
 # Benchmark executable
 add_executable(stats_benchmarks
     bench_main.c
-    bench_stats.c
-    bench_mean_var.c
+    bench_matrix.c
+    bench_decompose.c
+    bench_gemm.c
+    bench_gemv.c
+    bench_precision.c
+    bench_solve.c
+    bench_transpose.c
+    bench_tridiag.c
+    bench_vector_ops.c
 )
 
 # Link with benchmark framework and stats library
