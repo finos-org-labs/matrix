@@ -4,7 +4,7 @@
  */
 
 #include "bench_framework.h"
-#include <matrix/gemv.h>
+#include <gemv.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>

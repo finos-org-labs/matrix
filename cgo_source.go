@@ -1,0 +1,38 @@
+//go:build !lib
+
+// Source mode: compile C sources directly with CGO.
+// Usage: go build (default)
+// Requires: CGO_CFLAGS_ALLOW="-mavx.*|-msse.*|-mfma|-mavx512.*"
+package matrix
+
+/*
+#cgo CFLAGS: -I${SRCDIR}/include -I${SRCDIR}/modules/platform/include -O2 -Wall -std=c11 -D_POSIX_C_SOURCE=200112L -mavx2 -mfma -msse4.2
+#cgo LDFLAGS: -lm
+
+#include <matrix.h>
+#include <gemm.h>
+#include <gemv.h>
+#include <decompose.h>
+#include <solve.h>
+#include <transpose.h>
+#include <tridiag.h>
+#include <vector_ops.h>
+
+// Matrix sources
+#include "src/decompose.c"
+#include "src/gemm_scalar.c"
+#include "src/gemm_sse42.c"
+#include "src/gemm_avx2.c"
+#include "src/gemm_avx512.c"
+#include "src/gemm_dispatch.c"
+#include "src/gemv.c"
+#include "src/solve.c"
+#include "src/transpose.c"
+#include "src/tridiag.c"
+#include "src/vector_ops.c"
+*/
+import "C"
+
+import (
+	_ "github.com/finos-org-labs/platform"
+)

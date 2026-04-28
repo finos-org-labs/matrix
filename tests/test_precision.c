@@ -8,7 +8,7 @@
  */
 
 #include "test_framework.h"
-#include <matrix/matrix.h>
+#include <matrix.h>
 #include <simd_detect.h>
 
 #include <math.h>

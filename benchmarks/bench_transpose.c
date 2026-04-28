@@ -4,7 +4,7 @@
  */
 
 #include "bench_framework.h"
-#include <matrix/transpose.h>
+#include <transpose.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>

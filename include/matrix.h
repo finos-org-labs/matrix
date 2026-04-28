@@ -9,12 +9,12 @@
 #ifndef FC_MATRIX_H
 #define FC_MATRIX_H
 
-#include <matrix/vector_ops.h>
-#include <matrix/gemm.h>
-#include <matrix/gemv.h>
-#include <matrix/transpose.h>
-#include <matrix/decompose.h>
-#include <matrix/solve.h>
-#include <matrix/tridiag.h>
+#include <vector_ops.h>
+#include <gemm.h>
+#include <gemv.h>
+#include <transpose.h>
+#include <decompose.h>
+#include <solve.h>
+#include <tridiag.h>
 
 #endif /* FC_MATRIX_H */

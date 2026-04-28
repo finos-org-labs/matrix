@@ -10,7 +10,7 @@
 #ifndef FC_MATRIX_INTERNAL_H
 #define FC_MATRIX_INTERNAL_H
 
-#include <matrix/matrix.h>
+#include <matrix.h>
 
 #ifdef __cplusplus
 extern "C" {

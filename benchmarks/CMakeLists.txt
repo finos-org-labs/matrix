@@ -1,5 +1,5 @@
 #
-# benchmarks/CMakeLists.txt - Benchmark configuration for stats module
+# benchmarks/CMakeLists.txt - Benchmark configuration for matrix module
 #
 
 # Benchmark framework library
@@ -16,11 +16,11 @@ target_include_directories(bench_framework
 
 target_link_libraries(bench_framework
     PUBLIC
-        finkit_stats_static
+        finkit_matrix_static
 )
 
 # Benchmark executable
-add_executable(stats_benchmarks
+add_executable(matrix_benchmarks
     bench_main.c
     bench_matrix.c
     bench_decompose.c
@@ -33,20 +33,20 @@ add_executable(stats_benchmarks
     bench_vector_ops.c
 )
 
-# Link with benchmark framework and stats library
-target_link_libraries(stats_benchmarks
+# Link with benchmark framework and matrix library
+target_link_libraries(matrix_benchmarks
     PRIVATE
         bench_framework
-        finkit_stats_static
+        finkit_matrix_static
         m
 )
 
-target_compile_definitions(stats_benchmarks PRIVATE
+target_compile_definitions(matrix_benchmarks PRIVATE
     FC_STATIC_BUILD
 )
 
 # Include directories
-target_include_directories(stats_benchmarks
+target_include_directories(matrix_benchmarks
     PRIVATE
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/modules/platform/include
@@ -54,9 +54,9 @@ target_include_directories(stats_benchmarks
 )
 
 # Compiler flags for benchmarks
-target_compile_options(stats_benchmarks PRIVATE -Wall -Wextra -Wpedantic -ffp-contract=off)
+target_compile_options(matrix_benchmarks PRIVATE -Wall -Wextra -Wpedantic -ffp-contract=off)
 
 # Installation
-install(TARGETS stats_benchmarks
+install(TARGETS matrix_benchmarks
     RUNTIME DESTINATION bin
 )

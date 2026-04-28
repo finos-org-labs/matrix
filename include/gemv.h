@@ -8,7 +8,6 @@
 #ifndef FC_GEMV_H
 #define FC_GEMV_H
 
-#include "version.h"
 #include <stddef.h>
 #include <stdint.h>
 

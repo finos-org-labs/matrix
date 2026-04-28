@@ -26,6 +26,7 @@ target_link_libraries(matrix_tests
 
 target_compile_definitions(matrix_tests PRIVATE
     FC_STATIC_BUILD
+    FC_ENABLE_INTERNAL_TESTS
 )
 
 # Include directories

@@ -6,7 +6,7 @@
  */
 
 #include "bench_framework.h"
-#include <matrix/tridiag.h>
+#include <tridiag.h>
 
 #include <stdlib.h>
 #include <stdio.h>

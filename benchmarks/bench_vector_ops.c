@@ -4,7 +4,7 @@
  */
 
 #include "bench_framework.h"
-#include <matrix/vector_ops.h>
+#include <vector_ops.h>
 #include <stdlib.h>
 #include <stdio.h>
 

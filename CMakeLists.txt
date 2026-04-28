@@ -42,13 +42,21 @@ target_include_directories(finkit_matrix
         $<INSTALL_INTERFACE:include>
 )
 
-target_compile_definitions(finkit_matrix PRIVATE FC_STATIC_BUILD)
+target_compile_definitions(finkit_matrix PRIVATE FC_STATIC_BUILD FC_ENABLE_INTERNAL_TESTS)
 
-# Set compile flags for SIMD variants in matrix.c
+# Set compile flags for SIMD variants
 if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
-    set_source_files_properties(src/mean_var.c PROPERTIES COMPILE_FLAGS "-msse4.2 -mavx2 -mfma")
+    set_source_files_properties(src/gemm_sse42.c PROPERTIES COMPILE_FLAGS "-msse4.2")
+    set_source_files_properties(src/gemm_avx2.c PROPERTIES COMPILE_FLAGS "-mavx2 -mfma")
+    set_source_files_properties(src/gemm_avx512.c PROPERTIES COMPILE_FLAGS "-mavx512f -mavx512dq")
+    set_source_files_properties(src/gemv.c PROPERTIES COMPILE_FLAGS "-msse4.2 -mavx2 -mfma")
+    set_source_files_properties(src/transpose.c PROPERTIES COMPILE_FLAGS "-msse4.2 -mavx2 -mfma")
 elseif(MSVC)
-    set_source_files_properties(src/mean_var.c PROPERTIES COMPILE_FLAGS "/arch:AVX2")
+    set_source_files_properties(src/gemm_sse42.c PROPERTIES COMPILE_FLAGS "/arch:SSE2")
+    set_source_files_properties(src/gemm_avx2.c PROPERTIES COMPILE_FLAGS "/arch:AVX2")
+    set_source_files_properties(src/gemm_avx512.c PROPERTIES COMPILE_FLAGS "/arch:AVX512")
+    set_source_files_properties(src/gemv.c PROPERTIES COMPILE_FLAGS "/arch:AVX2")
+    set_source_files_properties(src/transpose.c PROPERTIES COMPILE_FLAGS "/arch:AVX2")
 endif()
 
 # Create static library

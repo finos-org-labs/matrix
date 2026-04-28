@@ -9,7 +9,7 @@
 #include <string.h>
 
 #include "test_framework.h"
-#include <matrix/tridiag.h>
+#include <tridiag.h>
 #include <error.h>
 
 /* Test tolerance */

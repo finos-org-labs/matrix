@@ -14,7 +14,7 @@
  * - test_precision.c: Precision tests
  */
 
-#include "../test_framework.h"
+#include "test_framework.h"
 
 /* External test registration functions from sub-modules */
 extern void test_vector_ops_register(void);
