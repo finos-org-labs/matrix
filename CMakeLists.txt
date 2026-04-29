@@ -16,8 +16,15 @@ if(FC_ENABLE_SANITIZERS)
 endif()
 
 # Generate cgo_source.go with detected SIMD flags
-# For runtime dispatch, we don't need SIMD flags in cgo since we use __attribute__((target(...)))
-set(FC_SIMD_CFLAGS "")
+if(FC_SIMD_LEVEL STREQUAL "AVX512")
+    set(FC_SIMD_CFLAGS "${FC_AVX512_FLAGS}")
+elseif(FC_SIMD_LEVEL STREQUAL "AVX2")
+    set(FC_SIMD_CFLAGS "${FC_AVX2_FLAGS}")
+elseif(FC_SIMD_LEVEL STREQUAL "SSE42")
+    set(FC_SIMD_CFLAGS "${FC_SSE42_FLAGS}")
+else()
+    set(FC_SIMD_CFLAGS "")
+endif()
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/cgo_source.go.in
     ${CMAKE_CURRENT_SOURCE_DIR}/cgo_source.go
@@ -63,12 +70,15 @@ set_source_files_properties(matrix-c/gemm_avx512.c PROPERTIES COMPILE_FLAGS "${F
 if(FC_SIMD_LEVEL STREQUAL "AVX512")
     set_source_files_properties(matrix-c/gemv.c PROPERTIES COMPILE_FLAGS "${FC_AVX512_FLAGS}")
     set_source_files_properties(matrix-c/transpose.c PROPERTIES COMPILE_FLAGS "${FC_AVX512_FLAGS}")
+    set_source_files_properties(matrix-c/vector_ops.c PROPERTIES COMPILE_FLAGS "${FC_AVX512_FLAGS}")
 elseif(FC_SIMD_LEVEL STREQUAL "AVX2")
     set_source_files_properties(matrix-c/gemv.c PROPERTIES COMPILE_FLAGS "${FC_AVX2_FLAGS}")
     set_source_files_properties(matrix-c/transpose.c PROPERTIES COMPILE_FLAGS "${FC_AVX2_FLAGS}")
+    set_source_files_properties(matrix-c/vector_ops.c PROPERTIES COMPILE_FLAGS "${FC_AVX2_FLAGS}")
 elseif(FC_SIMD_LEVEL STREQUAL "SSE42")
     set_source_files_properties(matrix-c/gemv.c PROPERTIES COMPILE_FLAGS "${FC_SSE42_FLAGS}")
     set_source_files_properties(matrix-c/transpose.c PROPERTIES COMPILE_FLAGS "${FC_SSE42_FLAGS}")
+    set_source_files_properties(matrix-c/vector_ops.c PROPERTIES COMPILE_FLAGS "${FC_SSE42_FLAGS}")
 endif()
 
 # Create static library
