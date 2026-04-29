@@ -7,7 +7,7 @@
 package matrix
 
 /*
-#cgo CFLAGS: -I${SRCDIR}/include -I${SRCDIR}/modules/platform/include -O2 -Wall -std=c11 -D_POSIX_C_SOURCE=200112L -mavx2 -mfma
+#cgo CFLAGS: -I${SRCDIR}/include -I${SRCDIR}/modules/platform/include -I${SRCDIR}/modules/platform/src -O2 -Wall -std=c11 -D_POSIX_C_SOURCE=200112L 
 #cgo LDFLAGS: -lm
 
 #include <matrix.h>
@@ -18,22 +18,42 @@ package matrix
 #include <transpose.h>
 #include <tridiag.h>
 #include <vector_ops.h>
+#include <simd_detect.h>
+
+// Platform sources (dependency)
+#include "modules/platform/src/simd_detect.c"
+#include "modules/platform/src/mem_aligned.c"
+#include "modules/platform/src/error.c"
+#include "modules/platform/src/fc_init.c"
+
+// Platform-specific sources
+#if defined(__linux__)
+  #include "modules/platform/src/platform_linux.c"
+#elif defined(__APPLE__)
+  #include "modules/platform/src/platform_macos.c"
+#elif defined(_WIN32)
+  #include "modules/platform/src/platform_win.c"
+#endif
 
 // Matrix sources
-#include "src/decompose.c"
-#include "src/gemm_scalar.c"
-#include "src/gemm_sse42.c"
-#include "src/gemm_avx2.c"
-#include "src/gemm_avx512.c"
-#include "src/gemm_dispatch.c"
-#include "src/gemv.c"
-#include "src/solve.c"
-#include "src/transpose.c"
-#include "src/tridiag.c"
-#include "src/vector_ops.c"
+#include "matrix-c/decompose.c"
+#include "matrix-c/gemm_scalar.c"
+#include "matrix-c/gemm_sse42.c"
+#include "matrix-c/gemm_avx2.c"
+#include "matrix-c/gemm_avx512.c"
+#include "matrix-c/gemm_dispatch.c"
+#include "matrix-c/gemv.c"
+#include "matrix-c/solve.c"
+#include "matrix-c/transpose.c"
+#include "matrix-c/tridiag.c"
+#include "matrix-c/vector_ops.c"
+
+// Forward declarations for fc_init/fc_cleanup (no public header)
+int fc_init(void);
+void fc_cleanup(void);
 */
 import "C"
 
-import (
-	_ "github.com/finos-org-labs/platform"
-)
+func init() {
+	C.fc_init()
+}

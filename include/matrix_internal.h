@@ -19,60 +19,33 @@ extern "C" {
 #ifdef FC_ENABLE_INTERNAL_TESTS
 
 /* GEMM internal implementations */
-int fc_mat_gemm_f64_scalar(int m, int n, int k,
-                           double alpha,
-                           const double* A, int lda,
-                           const double* B, int ldb,
-                           double beta,
-                           double* C, int ldc);
+int fc_mat_gemm_f64_scalar(int m, int n, int k, double alpha, const double* A, int lda, const double* B, int ldb,
+                           double beta, double* C, int ldc);
 
-int fc_mat_gemm_f64_sse42(int m, int n, int k,
-                          double alpha,
-                          const double* A, int lda,
-                          const double* B, int ldb,
-                          double beta,
-                          double* C, int ldc);
+int fc_mat_gemm_f64_sse42(int m, int n, int k, double alpha, const double* A, int lda, const double* B, int ldb,
+                          double beta, double* C, int ldc);
 
-int fc_mat_gemm_f64_avx2(int m, int n, int k,
-                         double alpha,
-                         const double* A, int lda,
-                         const double* B, int ldb,
-                         double beta,
-                         double* C, int ldc);
+int fc_mat_gemm_f64_avx2(int m, int n, int k, double alpha, const double* A, int lda, const double* B, int ldb,
+                         double beta, double* C, int ldc);
 
-int fc_mat_gemm_f64_avx512(int m, int n, int k,
-                           double alpha,
-                           const double* A, int lda,
-                           const double* B, int ldb,
-                           double beta,
-                           double* C, int ldc);
+int fc_mat_gemm_f64_avx512(int m, int n, int k, double alpha, const double* A, int lda, const double* B, int ldb,
+                           double beta, double* C, int ldc);
 
 /* GEMV internal implementations */
-void fc_mat_gemv_f64_scalar(int m, int n,
-                            double alpha,
-                            const double* A, int lda,
-                            const double* x,
-                            double beta,
+void fc_mat_gemv_f64_scalar(int m, int n, double alpha, const double* A, int lda, const double* x, double beta,
                             double* y);
 
-void fc_mat_gemv_f64_sse42(int m, int n,
-                           double alpha,
-                           const double* A, int lda,
-                           const double* x,
-                           double beta,
+void fc_mat_gemv_f64_sse42(int m, int n, double alpha, const double* A, int lda, const double* x, double beta,
                            double* y);
 
-void fc_mat_gemv_f64_avx2(int m, int n,
-                          double alpha,
-                          const double* A, int lda,
-                          const double* x,
-                          double beta,
+void fc_mat_gemv_f64_avx2(int m, int n, double alpha, const double* A, int lda, const double* x, double beta,
                           double* y);
 
+void fc_mat_gemv_f64_avx512(int m, int n, double alpha, const double* A, int lda, const double* x, double beta,
+                            double* y);
+
 /* Transpose internal implementations */
-void transpose_blocked(int rows, int cols,
-                       const double* src, int ld_src,
-                       double* dst, int ld_dst);
+void transpose_blocked(int rows, int cols, const double* src, int ld_src, double* dst, int ld_dst);
 
 #endif /* FC_ENABLE_INTERNAL_TESTS */
 

@@ -38,11 +38,7 @@ extern "C" {
  *
  * @return FC_OK on success, FC_ERR_INVALID_ARG if inputs invalid
  */
-int fc_mat_gemv_f64(int64_t m, int64_t n,
-                    double alpha,
-                    const double* A, int64_t lda,
-                    const double* x,
-                    double beta,
+int fc_mat_gemv_f64(int64_t m, int64_t n, double alpha, const double* A, int64_t lda, const double* x, double beta,
                     double* y);
 
 #ifdef __cplusplus

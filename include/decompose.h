@@ -117,8 +117,8 @@ int fc_mat_cholesky_decompose_f64(int64_t n, double* A, int64_t lda);
  * @return FC_OK on success, FC_ERR_INVALID_ARG if inputs invalid,
  *         FC_ERR_OUT_OF_MEMORY if memory allocation fails
  */
-int fc_mat_svd_f64(int64_t m, int64_t n, double* A, int64_t lda,
-                   double* s, double* U, int64_t ldu, double* VT, int64_t ldvt);
+int fc_mat_svd_f64(int64_t m, int64_t n, double* A, int64_t lda, double* s, double* U, int64_t ldu, double* VT,
+                   int64_t ldvt);
 
 /**
  * @brief Eigenvalue decomposition for symmetric matrices
@@ -145,8 +145,7 @@ int fc_mat_svd_f64(int64_t m, int64_t n, double* A, int64_t lda,
  * @return FC_OK on success, FC_ERR_INVALID_ARG if inputs invalid,
  *         FC_ERR_CONVERGENCE if iteration fails to converge
  */
-int fc_mat_eig_sym_f64(int64_t n, double* A, int64_t lda,
-                       double* w, double* Q, int64_t ldq);
+int fc_mat_eig_sym_f64(int64_t n, double* A, int64_t lda, double* w, double* Q, int64_t ldq);
 
 #ifdef __cplusplus
 }

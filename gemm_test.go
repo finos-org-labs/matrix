@@ -4,14 +4,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/finos-org-labs/platform"
 )
 
 func TestGEMM(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Test case: C = A * B
 	// A: 2x3, B: 3x2, C: 2x2
@@ -41,10 +36,6 @@ func TestGEMM(t *testing.T) {
 }
 
 func BenchmarkGEMM(b *testing.B) {
-	if err := platform.Init(); err != nil {
-		b.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	sizes := []int{64, 128, 256, 512}
 	for _, n := range sizes {

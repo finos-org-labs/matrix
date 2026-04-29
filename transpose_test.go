@@ -4,14 +4,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/finos-org-labs/platform"
 )
 
 func TestTranspose(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Test case: B = A^T
 	// A: 2x3, B: 3x2

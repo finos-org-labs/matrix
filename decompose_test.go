@@ -4,14 +4,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/finos-org-labs/platform"
 )
 
 func TestLUDecompose(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Test 3x3 matrix
 	A := []float64{
@@ -39,10 +34,6 @@ func TestLUDecompose(t *testing.T) {
 }
 
 func TestQRDecompose(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Test 3x3 matrix
 	A := []float64{
@@ -70,10 +61,6 @@ func TestQRDecompose(t *testing.T) {
 }
 
 func TestCholeskyDecompose(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Test symmetric positive definite matrix
 	A := []float64{
@@ -100,10 +87,6 @@ func TestCholeskyDecompose(t *testing.T) {
 }
 
 func TestSVD(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Test 3x3 matrix
 	A := []float64{
@@ -139,10 +122,6 @@ func TestSVD(t *testing.T) {
 }
 
 func TestSVDIdentity(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Identity matrix should have singular values all equal to 1
 	A := []float64{
@@ -166,10 +145,6 @@ func TestSVDIdentity(t *testing.T) {
 }
 
 func TestEigenSymmetric(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Symmetric matrix
 	A := []float64{
@@ -195,10 +170,6 @@ func TestEigenSymmetric(t *testing.T) {
 }
 
 func TestEigenSymmetricIdentity(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Identity matrix - all eigenvalues should be 1
 	A := []float64{

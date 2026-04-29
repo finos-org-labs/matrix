@@ -4,14 +4,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/finos-org-labs/platform"
 )
 
 func TestGEMV(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Test case: y = A * x
 	// A: 2x3, x: 3x1, y: 2x1

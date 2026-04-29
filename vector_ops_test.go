@@ -4,16 +4,11 @@ import (
 	"math"
 	"testing"
 
-	"github.com/finos-org-labs/platform"
 )
 
 const epsilon = 1e-9
 
 func TestVecDot(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	x := []float64{1, 2, 3}
 	y := []float64{4, 5, 6}
@@ -31,10 +26,6 @@ func TestVecDot(t *testing.T) {
 }
 
 func TestVecNormL2(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	x := []float64{3, 4}
 
@@ -51,10 +42,6 @@ func TestVecNormL2(t *testing.T) {
 }
 
 func TestVecNormL1(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	x := []float64{-3, 4, -5}
 
@@ -71,10 +58,6 @@ func TestVecNormL1(t *testing.T) {
 }
 
 func TestVecDistanceL2(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	x := []float64{1, 2, 3}
 	y := []float64{4, 6, 8}
@@ -92,10 +75,6 @@ func TestVecDistanceL2(t *testing.T) {
 }
 
 func TestVecDistanceL1(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	x := []float64{1, 2, 3}
 	y := []float64{4, 6, 8}
@@ -113,10 +92,6 @@ func TestVecDistanceL1(t *testing.T) {
 }
 
 func BenchmarkVecDot(b *testing.B) {
-	if err := platform.Init(); err != nil {
-		b.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	sizes := []int{1000, 10000, 100000}
 	for _, n := range sizes {

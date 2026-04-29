@@ -4,14 +4,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/finos-org-labs/platform"
 )
 
 func TestSolveLinear(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Test solving A*x = b
 	// A = [[2, 1], [1, 2]], b = [3, 3], solution x = [1, 1]
@@ -36,10 +31,6 @@ func TestSolveLinear(t *testing.T) {
 }
 
 func TestInverse(t *testing.T) {
-	if err := platform.Init(); err != nil {
-		t.Fatalf("Init() failed: %v", err)
-	}
-	defer platform.Cleanup()
 
 	// Test 2x2 matrix inversion
 	// A = [[4, 7], [2, 6]], A^-1 = [[0.6, -0.7], [-0.2, 0.4]]

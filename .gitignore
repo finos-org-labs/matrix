@@ -9,9 +9,7 @@ build/**
 build-*/
 install/
 
-# Src
-src/**
-!src/**/CMakeLists.txt
+matrix-c/**
 
 # Go
 *.test
