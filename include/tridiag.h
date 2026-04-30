@@ -38,7 +38,14 @@ extern "C" {
  * @return FC_OK on success, FC_ERR_INVALID_ARG if inputs invalid,
  *         FC_ERR_SINGULAR_MATRIX if matrix is singular
  */
-int fc_mat_tridiag_solve_f64(int64_t n, const double* a, const double* b, const double* c, const double* d, double* x);
+int fc_mat_tridiag_solve_f64(
+    int64_t n,
+    const double* a,
+    const double* b,
+    const double* c,
+    const double* d,
+    double* x
+);
 
 /**
  * @brief Solve tridiagonal system with multiple right-hand sides
@@ -60,8 +67,17 @@ int fc_mat_tridiag_solve_f64(int64_t n, const double* a, const double* b, const 
  *
  * @return FC_OK on success, error code otherwise
  */
-int fc_mat_tridiag_solve_multi_f64(int64_t n, int64_t nrhs, const double* a, const double* b, const double* c,
-                                   const double* D, int64_t ldd, double* X, int64_t ldx);
+int fc_mat_tridiag_solve_multi_f64(
+    int64_t n,
+    int64_t nrhs,
+    const double* a,
+    const double* b,
+    const double* c,
+    const double* D,
+    int64_t ldd,
+    double* X,
+    int64_t ldx
+);
 
 #ifdef __cplusplus
 }

@@ -38,7 +38,14 @@ extern "C" {
  * @return FC_OK on success, FC_ERR_INVALID_ARG if inputs invalid,
  *         FC_ERR_SINGULAR_MATRIX if matrix is singular
  */
-int fc_mat_solve_linear_f64(int64_t n, int64_t nrhs, double* A, int64_t lda, double* B, int64_t ldb);
+int fc_mat_solve_linear_f64(
+    int64_t n,
+    int64_t nrhs,
+    double* A,
+    int64_t lda,
+    double* B,
+    int64_t ldb
+);
 
 /**
  * @brief Compute matrix inverse using LU decomposition

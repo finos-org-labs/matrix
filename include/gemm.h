@@ -43,8 +43,19 @@ extern "C" {
  *
  * @return FC_OK on success, FC_ERR_INVALID_ARG if inputs invalid
  */
-int fc_mat_gemm_f64(int64_t m, int64_t n, int64_t k, double alpha, const double* A, int64_t lda, const double* B,
-                    int64_t ldb, double beta, double* C, int64_t ldc);
+int fc_mat_gemm_f64(
+    int64_t m,
+    int64_t n,
+    int64_t k,
+    double alpha,
+    const double* A,
+    int64_t lda,
+    const double* B,
+    int64_t ldb,
+    double beta,
+    double* C,
+    int64_t ldc
+);
 
 #ifdef __cplusplus
 }

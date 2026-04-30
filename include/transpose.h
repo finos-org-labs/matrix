@@ -36,7 +36,14 @@ extern "C" {
  *
  * @return FC_OK on success, FC_ERR_INVALID_ARG if inputs invalid
  */
-int fc_mat_transpose_f64(int64_t rows, int64_t cols, const double* src, int64_t ld_src, double* dst, int64_t ld_dst);
+int fc_mat_transpose_f64(
+    int64_t rows,
+    int64_t cols,
+    const double* src,
+    int64_t ld_src,
+    double* dst,
+    int64_t ld_dst
+);
 
 #ifdef __cplusplus
 }

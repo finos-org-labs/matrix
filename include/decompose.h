@@ -111,14 +111,24 @@ int fc_mat_cholesky_decompose_f64(int64_t n, double* A, int64_t lda);
  * @param[out]   s      Singular values (length min(m,n)), in descending order
  * @param[out]   U      Left singular vectors (m×m, row-major), can be NULL if not needed
  * @param[in]    ldu    Leading dimension of U (stride, typically m)
- * @param[out]   VT     Right singular vectors transposed (n×n, row-major), can be NULL if not needed
+ * @param[out]   VT     Right singular vectors transposed (n×n, row-major), can be NULL if not
+ * needed
  * @param[in]    ldvt   Leading dimension of VT (stride, typically n)
  *
  * @return FC_OK on success, FC_ERR_INVALID_ARG if inputs invalid,
  *         FC_ERR_OUT_OF_MEMORY if memory allocation fails
  */
-int fc_mat_svd_f64(int64_t m, int64_t n, double* A, int64_t lda, double* s, double* U, int64_t ldu, double* VT,
-                   int64_t ldvt);
+int fc_mat_svd_f64(
+    int64_t m,
+    int64_t n,
+    double* A,
+    int64_t lda,
+    double* s,
+    double* U,
+    int64_t ldu,
+    double* VT,
+    int64_t ldvt
+);
 
 /**
  * @brief Eigenvalue decomposition for symmetric matrices

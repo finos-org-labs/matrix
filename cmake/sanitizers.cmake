@@ -1,5 +1,5 @@
 #
-# .github/sanitizers.cmake - CMake sanitizer configuration for matrix library
+# cmake/sanitizers.cmake - CMake sanitizer configuration for matrix library
 #
 #
 # Provides unified sanitizer configuration that works across:
