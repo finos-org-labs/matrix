@@ -1,8 +1,6 @@
 package matrix
 
 /*
-#cgo CFLAGS: -I../../include
-
 #include <matrix.h>
 */
 import "C"

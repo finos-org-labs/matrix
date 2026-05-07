@@ -1,8 +1,6 @@
 package matrix
 
 /*
-#cgo CFLAGS: -I../../include
-
 #include <vector_ops.h>
 */
 import "C"

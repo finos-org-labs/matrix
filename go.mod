@@ -1,3 +1,3 @@
-module github.com/finos-org-labs/matrix
+module github.com/finosorg-labs/matrix
 
 go 1.26.1

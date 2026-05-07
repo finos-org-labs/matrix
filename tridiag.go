@@ -1,7 +1,6 @@
 package matrix
 
 /*
-#cgo CFLAGS: -I${SRCDIR}/../../include
 #include <tridiag.h>
 #include <stdlib.h>
 */
