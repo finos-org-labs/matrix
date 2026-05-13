@@ -9,6 +9,8 @@ package matrix
 /*
 #cgo CFLAGS: -I${SRCDIR}/include -I${SRCDIR}/modules/platform/include -I${SRCDIR}/modules/platform/src -O2 -Wall -std=c11 -D_POSIX_C_SOURCE=200112L -mavx2 -mfma
 #cgo LDFLAGS: -lm
+#cgo LDFLAGS: ${SRCDIR}/modules/platform/build/linux_amd64/third_party/mpfr/libmpfr.a ${SRCDIR}/modules/platform/build/linux_amd64/third_party/gmp/libgmp.a -lm
+
 
 #include <matrix.h>
 #include <gemm.h>
@@ -19,6 +21,10 @@ package matrix
 #include <tridiag.h>
 #include <vector_ops.h>
 #include <simd_detect.h>
+#include "fc_bignum_init.c"
+#include "fc_bigint.c"
+#include "fc_bigfloat.c"
+#include "fc_precision.c"
 
 // Platform sources (dependency)
 #include "modules/platform/src/simd_detect.c"
