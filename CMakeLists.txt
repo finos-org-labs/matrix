@@ -92,7 +92,7 @@ target_include_directories(finkit_matrix_static
 )
 
 # Link platform and math library
-target_link_libraries(finkit_matrix_static PUBLIC finkit_platform_static m)
+target_link_libraries(finkit_matrix_static PUBLIC finkit::platform m)
 
 # Create alias
 add_library(finkit::matrix ALIAS finkit_matrix_static)
