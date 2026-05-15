@@ -45,10 +45,15 @@ WINDOWS_ARTIFACT_DIR  := $(WINDOWS_BUILD_DIR)
 LINUX_CONFIG := -G Ninja \
 	-B $(LINUX_BUILD_DIR) \
 	-DCMAKE_BUILD_TYPE=$(BUILD_TYPE) \
-	-DCMAKE_C_FLAGS="-fprofile-arcs -ftest-coverage" \
-	-DCMAKE_EXE_LINKER_FLAGS="-fprofile-arcs -ftest-coverage" \
 	-DFC_BUILD_TESTS=ON \
 	-DFC_BUILD_BENCHMARKS=$(shell [ "$(BUILD_TYPE)" = "Release" ] && echo ON || echo OFF)
+
+COVERAGE_CONFIG := -G Ninja \
+	-B $(LINUX_BUILD_DIR) \
+	-DCMAKE_BUILD_TYPE=Debug \
+	-DFC_BUILD_TESTS=ON \
+	-DFC_BUILD_BENCHMARKS=OFF \
+	-DFC_ENABLE_COVERAGE=ON
 
 .PHONY: all default linux windows go test bench clean verify help format
 .PHONY: qa qa-sanitizers qa-static
@@ -88,6 +93,9 @@ go:
 	@CGO_CFLAGS_ALLOW="-m(avx2|avx512f|avx512dq|fma|sse4\.2)" go build -tags lib ./...
 
 test: linux
+	@echo "==> Rebuilding with coverage enabled"
+	@$(CMAKE) $(COVERAGE_CONFIG)
+	@$(CMAKE) --build $(LINUX_BUILD_DIR) --parallel
 	@echo "==> Running C tests with coverage"
 	@bash scripts/test_coverage.sh $(LINUX_BUILD_DIR)
 	@echo ""
